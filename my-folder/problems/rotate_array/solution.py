@@ -6,5 +6,4 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
         k = k % len(nums)
-        nums[:] = (nums[len(nums) - k:len(nums)] + nums[0:len(nums) - k])
-        
+        nums[:] = nums[len(nums)-k:] + nums[:len(nums)-k]
