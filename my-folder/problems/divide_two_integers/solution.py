@@ -28,7 +28,9 @@ class Solution(object):
         
         # loga (x/y) = loga x - loga y
         result = (math.exp(math.log(dividend) - math.log(divisor)))
+        # adding 0.0000000001 to account for rare cases
         result += 0.0000000001
+        # int() automatically rounds towards zero
         result = int(result)
         
         return -result if neg else result
