@@ -1,24 +1,37 @@
-class LRUCache:
+class LRUCache(object):
 
-    def __init__(self, capacity: int):
-        self.cache = OrderedDict()
-        self.maxsize = capacity
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        self.cache = collections.OrderedDict()
+        self.maxSize = capacity
 
-    def get(self, key: int) -> int:
-
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
         if key not in self.cache:
             return -1
         else:
             self.cache[key] = self.cache.pop(key)
             return self.cache[key]
+        
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
         if key not in self.cache:
-            if len(self.cache) == self.maxsize:
+            if len(self.cache) == self.maxSize:
                 self.cache.popitem(last=False)
         else:
             self.cache.pop(key)
         self.cache[key] = value
+        
 
 
 # Your LRUCache object will be instantiated and called as such:
